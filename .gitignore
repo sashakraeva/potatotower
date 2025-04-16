@@ -9,3 +9,5 @@ train.py
 evaluate copy.py
 potato_tower_env copy.py
 potato_tower_env.py
+evaluate.py
+svg/
