@@ -99,6 +99,7 @@ It works well for environments like potato tower, where:
 ---
 
 ## 5. Software Stack & Tools Used
+
 - `Python 3.10`
 - `gymnasium` for environment structure
 - `pymunk` for physics-based simulation
@@ -112,6 +113,7 @@ All components are connected via Python scripts. Shapes are read from SVG files,
 ---
 
 ## 6. Expectations of ML
+
 The RL agent is expected to:
 - Use **all 5 potato shapes** exactly once
 - Learn to **rotate and stack** them to maximize height
@@ -121,6 +123,7 @@ The RL agent is expected to:
 ---
 
 ## 7. Where do we get data?
+
 Data is **synthetically generated** from:
 - A directory of manually designed SVG potato shapes (`svg_01/`)
 - These are preprocessed into geometric polygon shapes
@@ -130,6 +133,7 @@ The rest of the environment is physics-based, so training data comes from simula
 ---
 
 ## 8. How do we test? How do we simulate?
+
 - Testing is done by running trained PPO models in `human` render mode.
 - Simulations are run with `Pymunk`, providing real-time physics evaluation of each placement.
 - Tower height, collision validation, and success/failure flags are printed at each step.
@@ -137,6 +141,7 @@ The rest of the environment is physics-based, so training data comes from simula
 ---
 
 ## 9. Interpretation of Results
+
 ### Results
 - Models successfully learned to use all 5 potatoes and build towers consistently.
 - Best tower heights reach over **35-37 px**, with all reward criteria met.
@@ -154,6 +159,7 @@ Yes — the trained agents learn stacking strategies that result in:
 ---
 
 ## 10. Future Steps & Improvements
+
 - Improve physical modeling for mass/weight stability (center of mass)
 - Extend to 3D tower building using real robotic arm simulation (e.g. PyBullet)
 - Introduce transfer learning to adapt stacking across different shape datasets
@@ -162,6 +168,7 @@ Yes — the trained agents learn stacking strategies that result in:
 ---
 
 ## Summary
+
 This project demonstrates an interactive, physics-aware, reinforcement learning environment for robotic stacking. It is a prototype for applying ML in fabrication tasks where shape irregularity, stability, and strategic rotation are critical to success.
 
 ---
@@ -170,6 +177,7 @@ This project demonstrates an interactive, physics-aware, reinforcement learning 
 
 ## 11. Folder structure
 
+```bash
 potatoes/
 ├── models/
 │   └── ppo_potato                # Trained PPO model
@@ -182,6 +190,7 @@ potatoes/
 ├── README.md
 ├── requirements.txt              # Python Libraries, you need to run the script
 └── extra_media/                  # Some images and gifs for the README.md file
+```
 
 ## 12. How to run the project
 
