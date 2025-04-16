@@ -3,3 +3,9 @@ __pycache__/
 
 # Virtual environment
 .venv/
+
+# Other files in my folder
+train.py
+evaluate copy.py
+potato_tower_env copy.py
+potato_tower_env.py
