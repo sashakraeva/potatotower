@@ -4,30 +4,37 @@ This repository combines Reinforcement Learning and ROS integration for a physic
 
 ![animation](extra_media/potatoesgif.gif)
 
-Index
-I [Project Summary](#i-project-summary)
-    1. [Concept & Architecture](#4-concept-of-operations--block-diagram)
-    2. [Software Stack](#5-software-stack--tools-used)
-    3. [ML Expectations](#6-expectations-of-ml)
-    4. [Data & Simulation](#7-where-do-we-get-data)
-    5. [Testing Strategy](#8-how-do-we-test-how-do-we-simulate)
-    6. [Results & Evaluation](#9-interpretation-of-results)
 
-II [Run the Project](#12-how-to-run-the-project)
+---
+---
+---
 
-III [Run with ROS](#iii-run-with-ros)
+# Index
 
-IV [Recap]
+### I - [Project Summary](#i-project-summary)
 
+[Concept & Architecture](#4-concept-of-operations--block-diagram)
 
+[Software Stack](#5-software-stack--tools-used)
 
-Future Work
+[ML Expectations](#6-expectations-of-ml)
 
-How to Run the Project
+[Data & Simulation](#7-where-do-we-get-data)
 
-Run with ROS
+[Testing Strategy](#8-how-do-we-test-how-do-we-simulate)
 
-Recap
+[Results & Evaluation](#9-interpretation-of-results)
+
+### II - [Run the Project](#12-how-to-run-the-project)
+
+### III - [Run with ROS](#iii-run-with-ros)
+
+### IV - [Recap](#iv-recap)
+
+---
+---
+---
+
 
 # I Project Summary
 
