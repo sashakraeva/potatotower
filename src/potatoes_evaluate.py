@@ -1,5 +1,5 @@
 from stable_baselines3 import PPO
-from all import PotatoTowerEnv
+from potatoes import PotatoTowerEnv
 import time
 
 # Load the trained PPO model
