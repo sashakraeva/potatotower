@@ -211,6 +211,12 @@ than in terminator:
 cd src
 
 Create the ROS package:
-sudo atkin_create_pkg potato_tower std_msgs rospy
+roscore in terminator, than split terminator in another window rosrun potato_tower tower_publisher.py
+
+u will see smth like [INFO] [1744820794.442024]:  Final tower height: 26.61310304216704
 
 
+
+to verify it is working: rostopic echo /potato_tower/height
+
+your screen should look like this: ![ros_screen](extra_media/ros_screenshot.png)
