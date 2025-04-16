@@ -1,0 +1,6 @@
+pygame
+pymunk
+svgpathtools
+shapely
+gymnasium
+stable-baselines3

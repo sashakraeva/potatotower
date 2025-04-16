@@ -2,49 +2,46 @@ from stable_baselines3 import PPO
 from potatoes import PotatoTowerEnv
 import time
 
-# Load the trained PPO model
-model = PPO.load("ppo_potato")
+# Load trained model
+model = PPO.load("models/ppo_potato_01")  # Adjust path if needed
 
-# Create the environment with rendering enabled
+# Create env with rendering enabled
 env = PotatoTowerEnv(render_mode="human")
 
+episodes = 10
 best_reward = -float("inf")
-best_obs_sequence = []
 best_actions = []
 
-# Try multiple rollouts to find the best stacking
-for episode in range(20):
+for ep in range(episodes):
     obs, _ = env.reset()
     done = False
     total_reward = 0
-    obs_sequence = []
     actions = []
 
-    print(f"\n🎬 Episode {episode + 1}")
+    print(f"\n🎬 Episode {ep+1}")
 
     while not done:
-        action, _ = model.predict(obs)
-        obs_sequence.append(obs)
-        actions.append(action)
+        action, _states = model.predict(obs)
         obs, reward, done, _, _ = env.step(action)
-        total_reward = reward
-        print(f"Step: Reward={reward:.2f}, Tower height={env.tower_height:.2f}")
+        actions.append(action)
+        total_reward += reward
+        env.render()
+        time.sleep(0.1)
 
-    print(f"✅ Episode {episode + 1} ended. Total reward: {total_reward:.2f}, Tower height: {env.tower_height:.2f}")
+    print(f"🏁 Episode {ep+1} finished — Total reward: {total_reward:.2f}, Tower height: {env.tower_height:.2f}")
 
     if total_reward > best_reward:
         best_reward = total_reward
-        best_obs_sequence = obs_sequence
-        best_actions = actions
+        best_actions = actions.copy()
 
-# Replay best sequence
-print("\n🎥 Replaying best stacking...")
+# Replay best episode
+print("\n🎥 Replaying best sequence...")
 obs, _ = env.reset()
 for action in best_actions:
-    obs, reward, done, _, _ = env.step(action)
+    obs, _, done, _, _ = env.step(action)
     env.render()
-    print(f"Replaying Step: Reward={reward:.2f}, Tower height={env.tower_height:.2f}")
-    time.sleep(0.5)
+    time.sleep(0.2)
 
 env.close()
-print("\n🏆 Final (best) tower height:", best_reward)
+
+print(f"\n🏆 Best reward: {best_reward:.2f} with Tower height: {env.tower_height:.2f}")

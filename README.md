@@ -2,6 +2,8 @@
 
 ![animation](extra_media/potatoesgif.gif)
 
+# I Project Summary
+
 ## 1. What is this?
 This project simulates a robotic system that learns how to build the highest possible tower using irregularly-shaped potato-like objects. The system uses reinforcement learning - [PPO](https://medium.com/@danushidk507/ppo-algorithm-3b33195de14a) to discover optimal stacking strategies within physical constraints, implemented in a custom [Gymnasium](https://gymnasium.farama.org/index.html) environment using [Pymunk](https://www.pymunk.org/en/latest/) physics and potato shapes extracted from SVG files.
 
@@ -27,7 +29,7 @@ The simulation provides reward feedback based on stack height and stability. The
 **ML Contribution:**
 > The PPO Agent replaces traditional placement rules by learning optimal stacking angles — improving height and stability (the arrow from environment to RL agent).
 
-** Why PPO?
+**Why PPO?**
 
 1. Why not q-table?
 
@@ -49,7 +51,7 @@ DQN is a deep-learning version of Q-learning, but:
 
 Poatato Tower environment is sequential, physics-based, and better suited to PPO’s way of learning policies over time
 
-2. PPO handles continuous & high-dimensional input
+3. PPO handles continuous & high-dimensional input
 
 - PPO uses neural networks as function approximators.
 - It learns from high-dimensional, continuous observation spaces.
@@ -102,7 +104,7 @@ The rest of the environment is physics-based, so training data comes from simula
 
 ## 9. Interpretation of Results
 ### Results
-- Models successfully learned to use all 5 shapes and build towers consistently.
+- Models successfully learned to use all 5 potatoes and build towers consistently.
 - Best tower heights reach over **35-37 px**, with all reward criteria met.
 
 ### Did it work?
@@ -119,7 +121,6 @@ Yes — the trained agents learn stacking strategies that result in:
 
 ## 10. Future Steps & Improvements
 - Improve physical modeling for mass/weight stability (center of mass)
-- Add noisy perception simulation (camera drift, visual misalignment)
 - Extend to 3D tower building using real robotic arm simulation (e.g. PyBullet)
 - Introduce transfer learning to adapt stacking across different shape datasets
 - Include shape-specific affordances (e.g., flat surfaces preferred for stacking)
@@ -128,4 +129,59 @@ Yes — the trained agents learn stacking strategies that result in:
 
 ## Summary
 This project demonstrates an interactive, physics-aware, reinforcement learning environment for robotic stacking. It is a prototype for applying ML in fabrication tasks where shape irregularity, stability, and strategic rotation are critical to success.
+
+---
+
+# II Project Run
+
+## 11. Folder structure
+
+potatoes/
+├── models/
+│   └── ppo_potato                # Trained PPO model
+├── svg_01/
+│   └── potato_01.svg ...         # SVG shapes of potatoes
+├── src/
+│   ├── potatoes.py               # Custom Gym environment
+│   ├── potatoes_train.py         # Training script using PPO
+│   └── potatoes_evaluate.py      # Script to evaluate trained model
+├── README.md
+├── requirements.txt              # Python Libraries, you need to run the script
+└── extra_media/                  # Some images and gifs for the README.md file
+
+## 12. How to run the project
+
+1. Fork and Clone (git clone [link to the forked repository]) this repository
+2. Navigate to the folder on your machine
+3. Create and activate the virtual environment
+
+``` bash
+# Create virtual environment
+python -m venv .venv
+
+# Activate (on Windows)
+.venv\Scripts\activate
+
+# Or on macOS/Linux
+source .venv/bin/activate
+```
+4. Install Dependencies
+
+``` bash
+pip install -r requirements.txt
+``` 
+
+5. Train a model
+
+``` bash
+cd src
+python potatoes_train.py
+``` 
+
+6. Evaluate the trained model
+
+``` bash
+cd src
+python potatoes_evaluate.py
+```
 
