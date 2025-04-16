@@ -185,3 +185,32 @@ cd src
 python potatoes_evaluate.py
 ```
 
+# III Run with ROS
+
+Fisrt: chmod +x .docker/build_image.sh   chmod +x .docker/run_user.sh 
+
+add this:
+if [ -f "/potato_ws/setup.bash" ]; then
+    source /potato_ws/setup.bash
+fi 
+to your .bashrc file (code ~/.bashrc)
+
+to build image : docker build -t potato-ros .
+
+to run image : docker run -it potato-ros
+
+
+than: sudo chown -R sashanosense /dev_ws
+
+than terminator 
+
+than in vscode -> docker -> right mouse click on the runnin image -> attach vs code -> open folder [/potato_ws/src/]
+
+than in terminator:
+
+cd src
+
+Create the ROS package:
+sudo atkin_create_pkg potato_tower std_msgs rospy
+
+

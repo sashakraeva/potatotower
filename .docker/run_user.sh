@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-echo -e "Starting up ros_potatotower container \n >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-echo -e "This container will access to the users home directory and log in as the user with their password and x sever access.\nYou will not own the workspace though, use sudo chown -R $USER /dev_ws"
+echo -e "Starting up potato_tower container \n >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+echo -e "This container will access to the users home directory and log in as the user with their password and x sever access.\nYou will not own the workspace though, use sudo chown -R $USER /potato_ws"
 echo -e "Source the workspace with source devel/setup.bash"
 
 docker run -it --privileged \
@@ -9,7 +9,7 @@ docker run -it --privileged \
     --group-add sudo \
     --env="DISPLAY" \
     --env="QT_X11_NO_MITSHM=1" \
-    --workdir="/dev_ws" \
+    --workdir="/potato_ws" \
     --volume="/home/$USER:/home/$USER" \
     --volume="/etc/group:/etc/group:ro" \
     --volume="/etc/passwd:/etc/passwd:ro" \
@@ -19,4 +19,4 @@ docker run -it --privileged \
     --volume="/dev:/dev" \
     --net=host \
     --cap-add=sys_nice \
-    ros_potatotower:latest
+    potato_tower:latest

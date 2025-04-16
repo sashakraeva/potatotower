@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-echo -e "Building ros_potatotower:lastest image"
+echo -e "Building PotatoTower Image"
 
 DOCKER_BUILDKIT=1 \
 docker build --pull --rm -f ./.docker/Dockerfile \
 --build-arg BUILDKIT_INLINE_CACHE=1 \
---tag ros_potatotower:latest .
+--tag potato_tower:latest .
