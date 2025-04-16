@@ -1,6 +1,33 @@
 # Potato Tower Builder: AI-Driven Robotic Stacking Simulation
 
+This repository combines Reinforcement Learning and ROS integration for a physical simulation of robotic stacking
+
 ![animation](extra_media/potatoesgif.gif)
+
+Index
+I [Project Summary](#i-project-summary)
+    1. [Concept & Architecture](#4-concept-of-operations--block-diagram)
+    2. [Software Stack](#5-software-stack--tools-used)
+    3. [ML Expectations](#6-expectations-of-ml)
+    4. [Data & Simulation](#7-where-do-we-get-data)
+    5. [Testing Strategy](#8-how-do-we-test-how-do-we-simulate)
+    6. [Results & Evaluation](#9-interpretation-of-results)
+
+II [Run the Project](#12-how-to-run-the-project)
+
+III [Run with ROS](#iii-run-with-ros)
+
+IV [Recap]
+
+
+
+Future Work
+
+How to Run the Project
+
+Run with ROS
+
+Recap
 
 # I Project Summary
 
@@ -187,36 +214,83 @@ python potatoes_evaluate.py
 
 # III Run with ROS
 
-Fisrt: chmod +x .docker/build_image.sh   chmod +x .docker/run_user.sh 
+## 13. Build ROS-Compatible Docker Image
 
-add this:
+
+```bash
+chmod +x .docker/build_image.sh
+chmod +x .docker/run_user.sh
+```
+
+## 14. Update your bashrc
+
+```bash
+code ~/.bashrc
+```
+
+Add this in the end of the file
+
 if [ -f "/potato_ws/setup.bash" ]; then
     source /potato_ws/setup.bash
-fi 
-to your .bashrc file (code ~/.bashrc)
+fi
 
-to build image : docker build -t potato-ros .
+## 15. Build and run the docker image
 
-to run image : docker run -it potato-ros
+```bash
+.docker/build_image.sh
+.docker/run_user.sh
+```
+
+than: 
+
+```bash
+sudo chown -R sashanosense /dev_ws
+terminator 
+```
+
+## 16. Start VS Code
+
+in vscode -> docker -> right mouse click on the runnin image -> attach vs code -> open folder [/potato_ws/src/]
+
+here you can update/create ros packages using catkin make
 
 
-than: sudo chown -R sashanosense /dev_ws
+## 17. To recieve the publishing:
 
-than terminator 
+in terminator:
 
-than in vscode -> docker -> right mouse click on the runnin image -> attach vs code -> open folder [/potato_ws/src/]
-
-than in terminator:
-
+```bash
 cd src
+roscore 
+```
 
-Create the ROS package:
-roscore in terminator, than split terminator in another window rosrun potato_tower tower_publisher.py
+split the terminator in two
 
-u will see smth like [INFO] [1744820794.442024]:  Final tower height: 26.61310304216704
+```bash
+rosrun potato_tower tower_publisher.py
+```
 
-
+Result: will see smth like [INFO] [1744820794.442024]:  Final tower height: 26.61310304216704
 
 to verify it is working: rostopic echo /potato_tower/height
 
 your screen should look like this: ![ros_screen](extra_media/ros_screenshot.png)
+
+
+
+# IV Recap
+
+This repository combines Reinforcement Learning and ROS integration for a physical simulation of robotic stacking:
+
+- A PPO-trained agent learns optimal stacking in a custom Gymnasium + Pymunk environment.
+- Shapes are SVG-based and physics-simulated in real-time.
+- The environment rewards height, center alignment, and stable contact.
+- The final model can be evaluated, and its output (tower height) is published as a ROS topic from inside a Dockerized ROS Noetic container running Python 3.10.
+- This makes it suitable for robotic fabrication research, prototyping of adaptive assembly strategies, or learning-based planning with irregular materials.
+
+
+### Authors
+[Aleksandra Kraeva](https://github.com/sashakraeva)
+
+### Acknowledgements
+- [Marita Georganta](https://www.linkedin.com/in/marita-georganta/) - Robotic Sensing Expert
