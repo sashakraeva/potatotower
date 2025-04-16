@@ -11,3 +11,5 @@ potato_tower_env copy.py
 potato_tower_env.py
 evaluate.py
 svg/
+svg_to_polygons.py
+potato_shapes.py
